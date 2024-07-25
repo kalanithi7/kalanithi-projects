@@ -24,17 +24,21 @@ public class Client extends Frame implements Runnable,ActionListener{
         send.addActionListener(this);
 
        try{
+        
         socket = new Socket("localhost",12000);
         dataInputStream = new DataInputStream(socket.getInputStream());
         dataOutputStream = new DataOutputStream(socket.getOutputStream());
         }
-        catch(Exception e){
+        catch(Exception E){
+
         }
+
         add(textField);
         add(textArea);
         add(send);
 
         chat = new Thread(this);
+        chat.setDaemon(true);
         chat.start();
 
       
@@ -53,13 +57,15 @@ public class Client extends Frame implements Runnable,ActionListener{
        try {
         dataOutputStream.writeUTF(msg);
         dataOutputStream.flush();
-       } catch (Exception ex) {
+       } 
+       catch (Exception ex) {
       
        }
         
     }
     public static void main(String[] args) {
-        new Client();
+         new Client();
+        
     }
     public void run(){
         while (true) {

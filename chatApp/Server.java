@@ -29,8 +29,10 @@ public class Server extends Frame implements Runnable,ActionListener{
         dataInputStream = new DataInputStream(socket.getInputStream());
         dataOutputStream = new DataOutputStream(socket.getOutputStream());
         }
-        catch(Exception e){
+        catch(Exception E){
+
         }
+
         add(textField);
         add(textArea);
         add(send);
@@ -55,7 +57,8 @@ public class Server extends Frame implements Runnable,ActionListener{
        try {
         dataOutputStream.writeUTF(msg);
         dataOutputStream.flush();
-       } catch (Exception ex) {
+       } 
+       catch (Exception ex) {
       
        }
         
